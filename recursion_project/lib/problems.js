@@ -39,7 +39,11 @@ function lucasNumber(n) {
 // sumArray([5, 2])         // => 7
 // sumArray([4, 10, -1, 2]) // => 15
 function sumArray(array) {
+    if (array.length === 0) {
+        return 0;
+    }
 
+    return array.shift() + sumArray(array);
 }
 
 
@@ -55,7 +59,11 @@ function sumArray(array) {
 // reverseString("internet")    // => "tenretni"
 // reverseString("friends")     // => "sdneirf"
 function reverseString(str) {
+    if (str.length === 0) {
+        return '';
+    }
 
+    return str.slice(-1) + reverseString(str.slice(0,str.length-1));
 }
 
 
@@ -76,7 +84,15 @@ function reverseString(str) {
 // pow(3, 4)    // => 81
 // pow(2, -5)   // => 0.03125
 function pow(base, exponent) {
+    if (exponent === 0) {
+        return 1;
+    }
 
+    if (exponent > 0) {
+        return base * pow(base, exponent -1)
+    } else {
+        return (1.0 / base) * pow(base, exponent +1)
+    }
 }
 
 
