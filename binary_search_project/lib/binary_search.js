@@ -17,7 +17,20 @@ function binarySearch(array, target) {
 }
 
 function binarySearchIndex(array, target) {
+    let start = 0;
+    let endidx = array.length;
 
+    while (start <= endidx) {
+        let mid = Math.floor((start + endidx)/2);
+        if (array[mid] === target) return mid;
+        if (array[mid] > target) {
+            endidx = mid - 1;
+        } else {
+            start = mid + 1;
+        }
+    }
+
+    return -1;
 }
 
 
