@@ -103,27 +103,65 @@ class LinkedList {
 
     // TODO: Implement the contains method here
     contains(target) {
-
+        let current = this.head;
+        while (current) {
+            if (current.value === target) return true;
+            current=current.next;
+        }
+        return false;
     }
 
     // TODO: Implement the get method here
     get(index) {
-
+        if (index > this.length) return null;
+        let curr = this.head;
+        while (index > 0 ) {
+            curr = curr.next;
+            index--;
+        }
+        return curr;
     }
 
     // TODO: Implement the set method here
     set(index, val) {
+        let node = this.get(index);
+        if (node ) {
+            node.value = val;
+            return true;
 
+        }
+        return false;
     }
 
     // TODO: Implement the insert method here
     insert(index, val) {
+        if (index > this.length - 1) return false;
 
+        let newNode = new Node(val);
+        let curr = this.head;
+        while (index > 1) {
+            curr = curr.next;
+            index--;
+        }
+        let next = curr.next;
+        curr.next = newNode;
+        newNode.next = next;
+        this.length++;
+        return true;
     }
 
     // TODO: Implement the remove method here
     remove(index) {
-
+        if (index > this.length) return undefined;
+        let curr = this.head;
+        while (index > 1) {
+            curr = curr.next;
+            index--;
+        }
+        let removed = curr.next;
+        curr.next = removed.next;
+        this.length--;
+        return removed;
     }
 
     // TODO: Implement the size method here
