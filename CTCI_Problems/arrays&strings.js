@@ -74,4 +74,38 @@ function URLStrify(string, length) {
 
 }
 
-console.log(URLStrify('Mr John Smith', 13)+'--');
+// console.log(URLStrify('Mr John Smith', 13));
+
+// #1.4
+// O(n) time space is O(1) if you argue that there cant be more than 26 letters in the hash
+
+function palindromePerm (string) {
+    let hash = {};
+    for (let i = 0; i < string.length; i++) {
+        if (string[i] === ' ') {
+            continue;
+        } else if (hash[string[i].toLowerCase()] === undefined){
+            hash[string[i].toLowerCase()] = 1;
+        } else {
+            hash[string[i].toLowerCase()] += 1;
+        }
+    }
+    let values = Object.values(hash);
+
+    let odds= 0;
+
+    for (let i = 0; i < values.length; i++) {
+        if (values[i] % 2 !== 0) {
+            odds += 1;
+        } 
+        if (odds > 1) {
+            return false;
+        }
+    }
+
+    return true;
+
+}
+
+// console.log(palindromePerm('Tact Coa'));
+// console.log(palindromePerm('Tact'));
