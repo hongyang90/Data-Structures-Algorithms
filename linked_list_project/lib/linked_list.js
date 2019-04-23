@@ -39,7 +39,7 @@ class LinkedList {
 
     // TODO: Implement the addToTail method here
     addToTail(val) {
-        let newNode = new Node(val)
+        let newNode = new Node(val);
         if (this.head === null && this.tail === null) {
             this.head = newNode;
             this.tail = newNode;
@@ -54,17 +54,51 @@ class LinkedList {
 
     // TODO: Implement the removeTail method here
     removeTail() {
-
+        if (this.length === 0) return undefined;
+        let tail = this.tail;
+        if (this.length === 1) {
+            this.head = null;
+            this.tail= null;
+        } else {
+            let current = this.head;
+            while (current.next.next) {
+                current = current.next;
+            }
+            current.next = null;
+            this.tail = current;
+        }
+        this.length--;
+        return tail;
     }
 
     // TODO: Implement the addToHead method here
     addToHead(val) {
+        let newNode = new Node(val);
+        if (this.head === null && this.tail === null) {
+            this.head = newNode;
+            this.tail = newNode;
+        } else {
+            let prevHead = this.head;
+            this.head= newNode;
+            this.head.next = prevHead;
+        }
 
+        this.length++;
+        return this;
     }
 
     // TODO: Implement the removeHead method here
     removeHead() {
-
+        if (!this.length) return undefined;
+        let oldhead = this.head;
+        if (this.length == 1) {
+            this.head =null;
+            this.tail= null;
+        } else {
+            this.head = oldhead.next;
+        }
+        this.length--;
+        return oldhead;
     }
 
     // TODO: Implement the contains method here
