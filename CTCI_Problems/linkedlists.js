@@ -22,3 +22,40 @@ function removeDups(list) {
 
 }
 
+
+// #2.2 
+// assume singly linkedlist 
+function kthNodeFromLast(list, k) {
+    let hash = {};
+    let i = 1;
+    let curr = list.head;
+    while (curr) {
+        hash[i] = curr;
+        i++;
+        curr = curr.next;
+    }
+
+    return hash[i-k];
+
+}
+
+// two pointer solution from book
+
+function kthNodeFromLast(list, k) {
+    let curr = this.head;
+    let last= this.head;
+    for (let i=0; i< k; i++){
+        last = last.next;
+    }
+    
+    while (last) {
+        last= last.next;
+        curr = curr.next;   
+    }
+    return curr;
+}
+
+// #2.3
+
+
+
