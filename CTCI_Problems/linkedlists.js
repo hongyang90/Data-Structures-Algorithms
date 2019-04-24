@@ -1,6 +1,6 @@
 // Chapter 2 Problems
 
-// #2.1 Remove all duplicates from an unosrted linkedlist
+// #2.1 Remove all duplicates from an unsorted linkedlist
 // O(n) time 
 function removeDups(list) {
     let hash = {};
@@ -41,6 +41,7 @@ function kthNodeFromLast(list, k) {
 
 // two pointer solution from book
 
+
 function kthNodeFromLast(list, k) {
     let curr = this.head;
     let last= this.head;
@@ -56,6 +57,16 @@ function kthNodeFromLast(list, k) {
 }
 
 // #2.3
+// only works for middle nodes
+function deleteMidNode(node) {
+    
+    let current = node;
+    let next = node.next;
+    let newNext= next.next;
 
+    current.value = next.value;
+    current.next = newNext;
+    
+}
 
 
