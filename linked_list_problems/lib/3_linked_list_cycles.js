@@ -61,6 +61,24 @@
 // -----------
 function hasCycle(linkedList) {
   // TODO: Implement the hasCycle function!
+  let head = linkedList.head;
+  if (head === null) return false;
+  if (head.next === null) return false;
+  let hash = new Set();
+
+  let curr = head;
+
+  while (curr) {
+    if (!hash.has(curr)) {
+      hash.add(curr);
+    } else {
+      return true;
+    }
+    curr = curr.next;
+  }
+
+  return false;
+
 
 }
 

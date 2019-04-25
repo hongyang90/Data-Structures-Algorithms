@@ -40,7 +40,7 @@
 // Let's code!
 // -----------
 function linkedListIntersection(list1, list2) {
-  // TODO: Implement the hasCycle function!
+  // TODO: Implement the hasIntersection function!
   let lengthA = 0;
   let lengthB = 0;
 
