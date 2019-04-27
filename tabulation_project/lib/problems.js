@@ -98,10 +98,35 @@ function maxNonAdjacentSum(nums, memo={}) {
 // minChange([1, 4, 5], 8))         // => 2, because 4 + 4 = 8
 // minChange([1, 5, 10, 25], 15)    // => 2, because 10 + 5 = 15
 // minChange([1, 5, 10, 25], 100)   // => 4, because 25 + 25 + 25 + 25 = 100
+// function minChange(coins, amount, memo ={}) {
+//     if (amount in memo) return memo[amount]
+//     if (amount === 0) return 0; 
+//     let result = []
+//     coins.forEach( coin => {
+//         if (coin <= amount) {
+//             let res = minChange(coins, amount - coin, memo) + 1;
+//             result.push(res)
+//         }
+//     });
+    
+//     return memo[amount]=Math.min(...result);
+// }
+
 function minChange(coins, amount) {
+    let table = new Array(amount+1).fill(Infinity);
+    table[0] = 0;
 
+    coins.forEach( val => {
+        for (let amt = 0; amt < table.length; amt++) {
+            for (let qty = 0; q*val <= amt; q++){
+                let remainder = amt - qty * val;
+                let attempt = table[remainder] + qty;
+                if (attempt < table[amt]) table[amt] = attempt;
+            }
+        }
+    });
+    return table[table.length-1];
 }
-
 
 module.exports = {
     stepper,
