@@ -40,11 +40,27 @@ class BST {
         if (val < root.val) {
             return this.searchRecur(val, root.left);
         } else if( val > root.val) {
-            return this.searchRecur(val, root.right)
+            return this.searchRecur(val, root.right);
             
         } else {
             return true;
         }
+   }
+
+   searchIter(val, root=this.root) {
+       if (!root) return false;
+
+        while (root) {
+            if (root.val === val) {
+                return true;
+            } else if (root.val > val) {
+                root = root.left;
+            } else {
+                root = root.right;
+            }
+        }
+
+        return false;
    }
 
 }
