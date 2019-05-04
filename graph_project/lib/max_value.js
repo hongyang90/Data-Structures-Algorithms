@@ -16,6 +16,15 @@ function maxValue(node, visited=new Set()) {
     return max;
 }
 
+// recursive 
+
+function maxValue(node, visited= new Set()) {
+    if (visited.has(node)) return -Infinity;
+    visited.add(node);
+    let neighborMax = node.neighbors.map( node => maxValue(node, visited))
+    return Math.max(node.val, ...neighborMax);
+}
+
 module.exports = {
     maxValue
 };
