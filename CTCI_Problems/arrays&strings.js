@@ -109,3 +109,44 @@ function palindromePerm (string) {
 
 // console.log(palindromePerm('Tact Coa'));
 // console.log(palindromePerm('Tact'));
+
+// #1.5 
+
+function oneAway(str1, str2) {
+    if (Math.abs(str1.length - str2.length) > 1) return false;
+    let longer;
+    let shorter;
+    if (str1.length >= str2.length) {
+        longer = str1;
+        shorter = str2;
+    } else {
+        longer = str2;
+        shorter = str1;
+    }
+    let hash = {};
+
+    for (let i=0; i<longer.length; i++) {
+        if (hash[longer[i]] === undefined) {
+            hash[longer[i]] = 1;
+        } else {
+            hash[longer[i]] += 1; 
+        }
+    }
+
+    for (let j=0; j<shorter.length; j++) {
+        if (hash[shorter[j]]) {
+            hash[shorter[j]]--;
+        }
+    }
+
+    let len = Object.values(hash).filter( ele => ele === 1).length;
+    return len <= 1;
+    
+
+}
+
+console.log(oneAway('pale', 'ple'));
+console.log(oneAway('pales', 'pale'));
+console.log(oneAway('pale', 'bale'));
+console.log(oneAway('pale', 'bake'));
+
