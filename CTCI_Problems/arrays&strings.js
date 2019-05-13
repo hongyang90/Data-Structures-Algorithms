@@ -145,8 +145,32 @@ function oneAway(str1, str2) {
 
 }
 
-console.log(oneAway('pale', 'ple'));
-console.log(oneAway('pales', 'pale'));
-console.log(oneAway('pale', 'bale'));
-console.log(oneAway('pale', 'bake'));
+// console.log(oneAway('pale', 'ple'));
+// console.log(oneAway('pales', 'pale'));
+// console.log(oneAway('pale', 'bale'));
+// console.log(oneAway('pale', 'bake'));
+
+// 1.6 
+
+function compress(str) {
+    let res = '';
+    let count = 1;
+
+    for (let i=0; i<str.length; i++){
+        if (str[i] === str[i+1]) {
+            count++;
+        } else {
+            res = res + str[i] + count;
+            count = 1;
+        }
+    }
+
+    if (res.length > str.length){
+        return str;
+    } else {
+        return res;
+    }
+}
+
+console.log(compress('aabcccccaaa')); // should return 'a2b1c5a3'
 
