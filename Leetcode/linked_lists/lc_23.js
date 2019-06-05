@@ -20,3 +20,14 @@ function mergeKsortedLists(lists) {
     newCurr.next = null;
     return head;
 }
+// using helper function from lc 23
+function mergeKsortedLists( lists) {
+    if (lists.length === 1) return lists[0];
+    if (!lists.length) return [];
+
+    let res = mergeTwoLists(lists.shift(), lists.shift());
+    while (lists.length){
+        res = mergeTwoSortedLists(res, lists.shift());
+    }
+    return res;
+}
