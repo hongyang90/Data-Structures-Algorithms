@@ -173,4 +173,6 @@ function compress(str) {
 }
 
 console.log(compress('aabcccccaaa')); // should return 'a2b1c5a3'
+console.log('abcdeefg');
+
 
